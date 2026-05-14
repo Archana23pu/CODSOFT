@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Archana Portfolio</title>
+
+<style>
+body { margin:0; font-family: Arial; background:#f4f9ff; transition:0.3s; }
+
+/* Dark Mode */
+.dark {
+ background:#1e1e1e;
+ color:white;
+}
+
+/* Navbar */
+nav {
+ display:flex;
+ justify-content:space-between;
+ padding:15px;
+ background:#4682b4;
+ color:white;
+ position:sticky;
+ top:0;
+}
+nav ul {
+ display:flex;
+ list-style:none;
+}
+nav ul li {
+ margin:0 10px;
+ cursor:pointer;
+}
+nav ul li:hover {
+ text-decoration:underline;
+}
+
+/* Sections */
+section {
+ padding:40px;
+ display:none;
+ animation: fade 0.5s;
+}
+.active {
+ display:block;
+}
+
+@keyframes fade {
+ from {opacity:0;}
+ to {opacity:1;}
+}
+
+/* Card */
+.card {
+ background:white;
+ padding:20px;
+ margin:10px 0;
+ border-radius:10px;
+ box-shadow:0 0 10px gray;
+ transition:0.3s;
+}
+.card:hover {
+ transform:scale(1.02);
+}
+
+/* Profile Image */
+.profile {
+ width:140px;
+ height:140px;
+ border-radius:50%;
+ display:block;
+ margin:auto;
+ object-fit:cover;
+ border:3px solid #4682b4;
+}
+
+/* Landing */
+.hero {
+ text-align:center;
+ padding:50px;
+ background:#ddd;
+}
+
+/* Buttons */
+button {
+ padding:10px;
+ background:#4682b4;
+ color:white;
+ border:none;
+ border-radius:5px;
+ cursor:pointer;
+}
+button:hover {
+ background:#315f86;
+}
+
+/* Social Buttons */
+.social a {
+ margin:5px;
+ text-decoration:none;
+}
+.social button {
+ background:black;
+}
+
+/* Calculator */
+.calculator button {
+ width:50px;
+ height:50px;
+ margin:5px;
+}
+
+/* Footer */
+footer {
+ text-align:center;
+ padding:10px;
+ background:#4682b4;
+ color:white;
+}
+</style>
+
+<script>
+function showSection(id) {
+ let sections = document.querySelectorAll("section");
+ sections.forEach(sec => sec.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
+}
+
+/* Dark Mode */
+function toggleDark() {
+ document.body.classList.toggle("dark");
+}
+
+/* Calculator */
+function add(val){
+ document.getElementById("display").value += val;
+}
+function calculate(){
+ try {
+  let result = eval(document.getElementById("display").value);
+  document.getElementById("display").value = result;
+ } catch {
+  alert("Invalid Input");
+ }
+}
+function clearDisplay(){
+ document.getElementById("display").value="";
+}
+function backspace(){
+ let val = document.getElementById("display").value;
+ document.getElementById("display").value = val.slice(0,-1);
+}
+</script>
+
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav>
+<h2>My Website</h2>
+<ul>
+<li onclick="showSection('home')">Home</li>
+<li onclick="showSection('portfolio')">Portfolio</li>
+<li onclick="showSection('calculator')">Calculator</li>
+<li onclick="toggleDark()"> </li>
+</ul>
+</nav>
+
+<!-- Landing -->
+<section id="home" class="active">
+<div class="hero">
+<h1>Welcome </h1>
+<p>This is my Landing Page</p>
+<button onclick="showSection('portfolio')">Explore</button>
+</div>
+</section>
+
+<!-- Portfolio -->
+<section id="portfolio">
+
+<div class="card">
+<img src="photo.jpg" class="profile" alt="My Photo">
+<h2 style="text-align:center;">Archana</h2>
+<p style="text-align:center;">Web Developer Student</p>
+
+<div class="social" style="text-align:center;">
+<a href="https://www.linkedin.com/" target="_blank">
+<button>LinkedIn</button>
+</a>
+
+<a href="https://github.com/" target="_blank">
+<button>GitHub</button>
+</a>
+</div>
+
+</div>
+
+<div class="card">
+<h2>About Me</h2>
+<p>I am Archana, learning Web Development and building projects using HTML, CSS and JavaScript.</p>
+</div>
+
+<div class="card">
+<h2>Skills</h2>
+<ul>
+<li>HTML</li>
+<li>CSS</li>
+<li>JavaScript</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Education</h2>
+<p>Master of Computer Science (Information Technology)</p>
+</div>
+
+<div class="card">
+<h2>Services</h2>
+<ul>
+<li>Web Design</li>
+<li>Frontend Development</li>
+<li>Basic JavaScript Projects</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Projects</h2>
+<p>Portfolio Website</p>
+<p>Landing Page</p>
+<p>Calculator</p>
+</div>
+
+<!-- Resume -->
+<div class="card">
+<h2>Resume</h2>
+
+<a href="resume.pdf" target="_blank">
+<button>View Resume</button>
+</a>
+
+<br><br>
+
+<a href="resume.pdf" download>
+<button>Download Resume</button>
+</a>
+
+</div>
+
+<div class="card">
+<h2>Contact</h2>
+<p>Email: adicholkar4@email.com</p>
+<p>Phone: 1234567890</p>
+</div>
+
+</section>
+
+<!-- Calculator -->
+<section id="calculator">
+<div class="card">
+<h2>Calculator</h2>
+
+<input type="text" id="display" style="width:100%; height:40px;">
+
+<br>
+
+<div class="calculator">
+<button onclick="add('1')">1</button>
+<button onclick="add('2')">2</button>
+<button onclick="add('3')">3</button>
+<button onclick="add('+')">+</button><br>
+
+<button onclick="add('4')">4</button>
+<button onclick="add('5')">5</button>
+<button onclick="add('6')">6</button>
+<button onclick="add('-')">-</button><br>
+
+<button onclick="add('7')">7</button>
+<button onclick="add('8')">8</button>
+<button onclick="add('9')">9</button>
+<button onclick="add('*')">*</button><br>
+
+<button onclick="add('0')">0</button>
+<button onclick="calculate()">=</button>
+<button onclick="clearDisplay()">C</button>
+<button onclick="add('/')">/</button><br>
+
+<button onclick="backspace()">⌫</button>
+</div>
+
+</div>
+</section>
+
+<footer>
+<p>© 2026 Archana</p>
+</footer>
+
+</body>
+</html>
